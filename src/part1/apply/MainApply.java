@@ -1,74 +1,54 @@
-package part1;
+package part1.apply;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class FilteringApples {
-    public static void main(String... args) {
-        List<Apple> inventory = Arrays.asList(
-                new Apple(80, "green"),
-                new Apple(155, "green"),
-                new Apple(120, "red")
+public class MainApply {
+    public static void main(String[] args) {
+        List<AppleVo> inventory = Arrays.asList(
+                new AppleVo(80, "green"),
+                new AppleVo(155, "green"),
+                new AppleVo(120, "red")
         );
-
+        /**** 기존필터  *****/
         // [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
-        List<Apple> greenApples = filterApples(inventory, FilteringApples::isGreenApple);
+        System.out.println(AppleFilter.filterGreenApples(inventory));
+        // [Apple{color='green', weight=155}]
+        System.out.println(AppleFilter.filterHeavyApples(inventory, 150));
+
+        /***** JDK 8이상 필터표현방법 ****/
+        // [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
+        List<AppleVo> greenApples = AppleFilter.filterApples(inventory, AppleVo::isGreenApple);
         System.out.println(greenApples);
 
         // [Apple{color='green', weight=155}]
-        List<Apple> heavyApples = filterApples(inventory, FilteringApples::isHeavyApple);
+        List<AppleVo> heavyApples = AppleFilter.filterApples(inventory, AppleVo::isHeavyApple);
         System.out.println(heavyApples);
 
         // [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
-        List<Apple> greenApples2 = filterApples(inventory, (Apple a) -> "green".equals(a.getColor()));
+        List<AppleVo> greenApples2 = AppleFilter.filterApples(inventory, (AppleVo a) -> "green".equals(a.getColor()));
         System.out.println(greenApples2);
 
+        /**** 익명함수 또는 람다 *****/
         // [Apple{color='green', weight=155}]
-        List<Apple> heavyApples2 = filterApples(inventory, (Apple a) -> a.getWeight() > 150);
+        List<AppleVo> heavyApples2 = AppleFilter.filterApples(inventory, (AppleVo a) -> a.getWeight() > 150);
         System.out.println(heavyApples2);
 
         // []
-        List<Apple> weirdApples = filterApples(inventory, (Apple a) -> a.getWeight() < 80 || "brown".equals(a.getColor()));
+        List<AppleVo> weirdApples = AppleFilter.filterApples(inventory, (AppleVo a) -> a.getWeight() < 80 || "brown".equals(a.getColor()));
         System.out.println(weirdApples);
-    }
 
-    public static List<Apple> filterGreenApples(List<Apple> inventory) {
-        List<Apple> result = new ArrayList<>();
-        for (Apple apple : inventory) {
-            if ("green".equals(apple.getColor())) {
-                result.add(apple);
-            }
-        }
-        return result;
-    }
+        // 순차 처리 코드 방식
+        List<AppleVo> seqHeavyApples = inventory.stream()
+                .filter((appleVo -> appleVo.getWeight() > 150))
+                .collect(Collectors.toList());
+        System.out.println(seqHeavyApples);
 
-    public static List<Apple> filterHeavyApples(List<Apple> inventory) {
-        List<Apple> result = new ArrayList<>();
-        for (Apple apple : inventory) {
-            if (apple.getWeight() > 150) {
-                result.add(apple);
-            }
-        }
-        return result;
-    }
-
-    public static boolean isGreenApple(Apple apple) {
-        return "green".equals(apple.getColor());
-    }
-
-    public static boolean isHeavyApple(Apple apple) {
-        return apple.getWeight() > 150;
-    }
-
-    public static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) {
-        List<Apple> result = new ArrayList<>();
-        for (Apple apple : inventory) {
-            if (p.test(apple)) {
-                result.add(apple);
-            }
-        }
-        return result;
+        // 병렬 처리 코드 방식
+        List<AppleVo> parallelHeavyApples = inventory.parallelStream()
+                .filter((appleVo -> appleVo.getWeight() > 150))
+                .collect(Collectors.toList());
+        System.out.println(parallelHeavyApples);
     }
 }

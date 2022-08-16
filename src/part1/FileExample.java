@@ -2,9 +2,8 @@ package part1;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.util.Collections;
 
-public class main {
+public class FileExample {
     public static void main(String[] args) {
 
         // jdk 8 이전에 사용 되었던 익명객체  코드
