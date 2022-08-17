@@ -1,13 +1,13 @@
 package chapter01;
 
-public class AppleVo {
+public class AppleVo01 {
 
     private int weight = 0;
     private String color = "";
 
-    public AppleVo() {}
+    public AppleVo01() {}
 
-    public AppleVo(int weight, String color) {
+    public AppleVo01(int weight, String color) {
         this.weight = weight;
         this.color = color;
     }
@@ -29,10 +29,10 @@ public class AppleVo {
     }
 
     // JDK 8버전 이후 Predicate를 이용해 필터 방법
-    public static boolean isGreenApple(AppleVo appleVo) {
+    public static boolean isGreenApple(AppleVo01 appleVo) {
         return "green".equals(appleVo.getColor());
     }
-    public static boolean isHeavyApple(AppleVo appleVo) {
+    public static boolean isHeavyApple(AppleVo01 appleVo) {
         return appleVo.getWeight() > 150;
     }
 
