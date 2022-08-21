@@ -10,6 +10,19 @@ public class AppleVo02 {
         this.color = color;
     }
 
+    public AppleVo02() {
+
+    }
+
+    public AppleVo02(Integer weight) {
+        this.weight = weight;
+    }
+
+    public AppleVo02(Color color, Integer weight) {
+        this.color = color;
+        this.weight = weight;
+    }
+
     public int getWeight() {
         return weight;
     }
