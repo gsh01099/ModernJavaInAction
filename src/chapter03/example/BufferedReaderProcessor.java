@@ -1,2 +1,8 @@
-package chapter03.example;public interface BufferedReaderProcessor {
+package chapter03.example;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+@FunctionalInterface
+public interface BufferedReaderProcessor {
+    String process(BufferedReader b) throws IOException;
 }

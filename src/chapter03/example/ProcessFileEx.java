@@ -1,8 +1,8 @@
-package chapter03;
-
+package chapter03.example;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
 
 public class ProcessFileEx {
     public static String processFile() throws IOException {

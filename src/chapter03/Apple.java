@@ -1,8 +1,10 @@
-package modernjavainaction.chap03;
+package chapter03;
+
+import chapter02.filter.Color;
 
 public class Apple {
 
-  private int weight = 0;
+  private Integer weight = 0;
   private Color color;
 
   public Apple(int weight, Color color) {
@@ -10,11 +12,11 @@ public class Apple {
     this.color = color;
   }
 
-  public int getWeight() {
+  public Integer getWeight() {
     return weight;
   }
 
-  public void setWeight(int weight) {
+  public void setWeight(Integer weight) {
     this.weight = weight;
   }
 

@@ -1,4 +1,4 @@
-package chapter03;
+package chapter03.example;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package chapter03;
+package chapter03.example;
 
 import java.util.List;
 import java.util.function.Consumer;
