@@ -48,4 +48,12 @@ public class Dish {
             new Dish("prawns", false, 400, Type.FISH),
             new Dish("salmon", false, 450, Type.FISH)
     );
+
+    // 칼로리 값을 기준으로 리스트를 오름차순 정렬!
+    public static final List<Dish> specialMenu = Arrays.asList(
+            new Dish("season fruit", true, 120, Type.OTHER),
+            new Dish("prawns", false, 300, Type.FISH),
+            new Dish("rice", true, 350, Type.OTHER),
+            new Dish("chicken", false, 400, Type.MEAT),
+            new Dish("french fries", true, 530, Type.OTHER));
 }
