@@ -23,5 +23,7 @@ public class Main05 {
 
         Find.요소검색();
         Find.첫번째요소찾기();
+
+        NumberStream.숫자범위확인메서드();
     }
 }
