@@ -1,10 +1,11 @@
 package chapter05;
 
+import java.io.IOException;
 import java.lang.reflect.MalformedParameterizedTypeException;
 
 public class Main05 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Filtering.프레디케이트필터링();
         Filtering.고유요소필터링();
 
@@ -25,5 +26,14 @@ public class Main05 {
         Find.첫번째요소찾기();
 
         NumberStream.숫자범위확인메서드();
+        Pythagoras.피타고라스수();
+
+        StreamMake.값으로스트림만들기();
+        StreamMake.null이될수있는객체로스트림만들기();
+        StreamMake.파일스트림();
+        StreamMake.피보나치();
+
+        StreamMake.generate메서드();
+        StreamMake.변형된피보나치수();
     }
 }
